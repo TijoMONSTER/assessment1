@@ -24,11 +24,17 @@
 
 - (IBAction)onMultiplyButtonPressed:(id)sender
 {
+    // dismiss the keyboard
+    [self.firstNumberTextField resignFirstResponder];
+    [self.secondNumberTextField resignFirstResponder];
+
+
     // if any textfield is empty, skip the operation
     if ([self.firstNumberTextField.text length] == 0 || [self.secondNumberTextField.text length] == 0) {
         return;
     }
 
+    // calculate and show result
     float firstNumber = [self.firstNumberTextField.text floatValue];
     float secondNumber = [self.secondNumberTextField.text floatValue];
 
