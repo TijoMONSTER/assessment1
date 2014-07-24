@@ -9,6 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *firstNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *secondNumberTextField;
+@property (weak, nonatomic) IBOutlet UILabel *resultsLabel;
 
 @end
 
@@ -17,13 +20,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)onMultiplyButtonPressed:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // if any textfield is empty, skip the operation
+    if ([self.firstNumberTextField.text length] == 0 || [self.secondNumberTextField.text length] == 0) {
+        return;
+    }
+
+    float firstNumber = [self.firstNumberTextField.text floatValue];
+    float secondNumber = [self.secondNumberTextField.text floatValue];
+
+    float result = firstNumber * secondNumber;
+    self.resultsLabel.text = [NSString stringWithFormat:@"%.05f", result];
 }
 
 @end
