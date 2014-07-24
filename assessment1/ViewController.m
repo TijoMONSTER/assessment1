@@ -39,6 +39,14 @@
     float secondNumber = [self.secondNumberTextField.text floatValue];
 
     float result = firstNumber * secondNumber;
+
+    // set the label color
+    if (result < 0) {
+        self.resultsLabel.textColor = [UIColor redColor];
+    } else {
+        self.resultsLabel.textColor = [UIColor greenColor];
+    }
+
     self.resultsLabel.text = [NSString stringWithFormat:@"%.05f", result];
 }
 
